@@ -2,15 +2,21 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Helpdesk Frontend</title>
+  <title>Login - Helpdesk</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <h1>Helpdesk</h1>
-  <button onclick="probarAPI()">Probar Backend</button>
+  <form class="login-box" onsubmit="login(event)">
+    <h2>Helpdesk</h2>
 
-  <pre id="resultado"></pre>
+    <input type="email" id="email" placeholder="Correo" required>
+    <input type="password" id="password" placeholder="Contraseña" required>
+
+    <button type="submit">Iniciar sesión</button>
+
+    <p id="mensaje"></p>
+  </form>
 
   <script src="script.js"></script>
 </body>

@@ -1,9 +1,25 @@
 body {
   font-family: Arial, sans-serif;
-  padding: 40px;
+  background: #f2f4f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-button {
-  padding: 10px 20px;
-  cursor: pointer;
+.login-box {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  width: 300px;
+}
+
+input, button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#mensaje {
+  text-align: center;
 }
