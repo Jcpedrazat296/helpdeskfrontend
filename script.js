@@ -32,18 +32,6 @@ function login(event) {
       "Error conectando con el servidor";
   });
 }
-const jwt = require("jsonwebtoken");
 
-const token = jwt.sign(
-  { id: user.id, role: user.role },
-  process.env.JWT_SECRET,
-  { expiresIn: "1h" }
-);
-
-res.json({
-  message: "Login exitoso",
-  token,
-  user
-});
 
 
