@@ -1,5 +1,12 @@
-const API_URL = "https://helpdeskfrontend-0vjx.onrender.com";
+const API_URL = "https://helpdesk-4hxw.onrender.com";
 const token = localStorage.getItem("token");
+
+console.log("TOKEN EN DASHBOARD:", token);
+
+if (!token) {
+  alert("No hay sesión, regresando al login");
+  window.location.href = "index.html";
+}
 
 // 🔐 PROTECCIÓN
 if (!token) {
