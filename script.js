@@ -15,20 +15,21 @@ function login(event) {
   })
   .then(res => res.json())
   .then(data => {
-    if (data.token) {
-      localStorage.setItem("token", data.token);
-      document.getElementById("mensaje").style.color = "green";
-      document.getElementById("mensaje").textContent = "Login exitoso";
+    console.log("RESPUESTA LOGIN:", data);
 
-      // Redirigir al dashboard
-      setTimeout(() => {
+    if (data.token) {
+        localStorage.setItem("token", data.token);
+
+        // PRUEBA VISIBLE
+        alert("Login correcto, redirigiendo al dashboard");
+
+        // REDIRECCIÓN DIRECTA (SIN setTimeout)
         window.location.href = "dashboard.html";
-      }, 1000);
     } else {
-      document.getElementById("mensaje").textContent =
-        data.message || "Credenciales incorrectas";
+    document.getElementById("mensaje").textContent =
+      data.message || "Credenciales incorrectas";
     }
-  })
+    })
   .catch(() => {
     document.getElementById("mensaje").textContent =
       "Error conectando con el servidor";
