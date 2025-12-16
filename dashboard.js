@@ -3,23 +3,18 @@ const token = localStorage.getItem("token");
 
 console.log("TOKEN EN DASHBOARD:", token);
 
+// SI NO HAY TOKEN → LOGIN
 if (!token) {
-  alert("No hay sesión, regresando al login");
-  window.location.href = "index.html";
+  window.location.replace("index.html");
 }
 
-// 🔐 PROTECCIÓN
-if (!token) {
-  window.location.href = "index.html";
-}
-
-// 🔓 LOGOUT
+// LOGOUT
 function logout() {
   localStorage.removeItem("token");
-  window.location.href = "index.html";
+  window.location.replace("index.html");
 }
 
-// 👥 USUARIOS
+// CARGAR USUARIOS
 function cargarUsuarios() {
   fetch(API_URL + "/users", {
     headers: {
@@ -31,24 +26,6 @@ function cargarUsuarios() {
     document.getElementById("usuarios").textContent =
       JSON.stringify(data, null, 2);
   })
-  .catch(() => {
-    alert("Error cargando usuarios");
-  });
+  .catch(err => console.error(err));
 }
 
-// 📁 CASOS
-function cargarCasos() {
-  fetch(API_URL + "/cases", {
-    headers: {
-      "Authorization": "Bearer " + token
-    }
-  })
-  .then(res => res.json())
-  .then(data => {
-    document.getElementById("casos").textContent =
-      JSON.stringify(data, null, 2);
-  })
-  .catch(() => {
-    alert("Error cargando casos");
-  });
-}

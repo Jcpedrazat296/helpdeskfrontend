@@ -8,31 +8,29 @@ function login(event) {
 
   fetch(API_URL + "/auth/login", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password })
   })
   .then(res => res.json())
   .then(data => {
-    console.log("RESPUESTA LOGIN:", data);
+    console.log("LOGIN RESPONSE:", data);
 
     if (data.token) {
-        localStorage.setItem("token", data.token);
+      // GUARDA TOKEN
+      localStorage.setItem("token", data.token);
 
-        // PRUEBA VISIBLE
-        alert("Login correcto, redirigiendo al dashboard");
-
-        // REDIRECCIÓN DIRECTA (SIN setTimeout)
-        window.location.href = "dashboard.html";
+      // REDIRIGE INMEDIATO
+      window.location.replace("dashboard.html");
     } else {
-    document.getElementById("mensaje").textContent =
-      data.message || "Credenciales incorrectas";
+      document.getElementById("mensaje").textContent =
+        data.message || "Credenciales incorrectas";
     }
-    })
-  .catch(() => {
+  })
+  .catch(err => {
+    console.error(err);
     document.getElementById("mensaje").textContent =
       "Error conectando con el servidor";
   });
 }
+
 
